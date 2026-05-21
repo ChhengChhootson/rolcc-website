@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&family=Nunito+Sans:wght@300;400;600;700;800&family=Noto+Sans+Khmer:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+@layer base {
+    html {
+        @apply scroll-smooth;
+    }
+
+    body {
+        @apply font-sans antialiased;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-heading;
+    }
+
+    .font-khmer {
+        font-family: 'Noto Sans Khmer', sans-serif;
+    }
+
+    ::selection {
+        @apply bg-church-blue/20 text-dark-navy;
+    }
+
+    * {
+        @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-church-blue focus-visible:ring-offset-2;
+    }
+}
+
+/* ============================================================
+   REUSABLE COMPONENTS
+   ============================================================ */
+@layer components {
+
+    /* Buttons */
+    .btn-primary {
+        @apply inline-flex items-center justify-center gap-2 bg-church-blue hover:bg-royal-blue text-white font-semibold px-7 py-3.5 rounded-full transition-all duration-300 shadow-church hover:shadow-church-lg hover:-translate-y-0.5;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center gap-2 border-2 border-church-blue text-church-blue hover:bg-church-blue hover:text-white font-semibold px-7 py-3.5 rounded-full transition-all duration-300;
+    }
+
+    .btn-gold {
+        @apply inline-flex items-center justify-center gap-2 bg-gradient-to-r from-church-gold to-amber-500 text-dark-navy font-bold px-7 py-3.5 rounded-full transition-all duration-300 shadow-gold hover:shadow-glow-gold hover:-translate-y-0.5;
+    }
+
+    .btn-outline-white {
+        @apply inline-flex items-center justify-center gap-2 border-2 border-white/40 text-white hover:bg-white/10 hover:border-white font-semibold px-7 py-3.5 rounded-full transition-all duration-300 backdrop-blur-sm;
+    }
+
+    /* Section Layout */
+    .section-header {
+        @apply text-center max-w-3xl mx-auto;
+    }
+
+    .section-badge {
+        @apply inline-block text-church-blue font-semibold text-sm uppercase tracking-widest mb-3;
+    }
+
+    .section-title {
+        @apply font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-dark-navy mb-4 leading-tight;
+    }
+
+    .section-subtitle {
+        @apply text-gray-500 text-lg leading-relaxed max-w-2xl mx-auto;
+    }
+
+    /* Cards */
+    .church-card {
+        @apply bg-white rounded-2xl shadow-church hover:shadow-church-lg transition-all duration-300 overflow-hidden;
+    }
+
+    .church-card-dark {
+        @apply bg-dark-navy/50 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-sky-blue/30 transition-all duration-300;
+    }
+
+    /* Stats */
+    .stat-card {
+        @apply rounded-2xl p-6 transition-all duration-300;
+    }
+
+    .stat-number {
+        @apply font-heading font-black text-4xl leading-none;
+    }
+
+    .stat-label {
+        @apply text-sm font-medium mt-2;
+    }
+
+    /* Form Elements */
+    .form-label {
+        @apply block text-sm font-medium text-gray-700 mb-1.5;
+    }
+
+    .form-input {
+        @apply w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-church-blue focus:ring-2 focus:ring-church-blue/20 transition-all duration-200;
+    }
+
+    .form-textarea {
+        @apply w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-church-blue focus:ring-2 focus:ring-church-blue/20 transition-all duration-200 resize-y;
+    }
+
+    .form-select {
+        @apply w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-church-blue focus:ring-2 focus:ring-church-blue/20 transition-all duration-200 bg-white;
+    }
+
+    /* Page Sections */
+    .page-hero {
+        @apply relative min-h-[40vh] flex items-center justify-center bg-hero-gradient overflow-hidden pt-20;
+    }
+
+    .page-hero-content {
+        @apply relative z-10 text-center text-white py-16 px-4;
+    }
+
+    .page-hero-title {
+        @apply font-heading font-black text-3xl sm:text-4xl lg:text-5xl leading-tight mb-4;
+    }
+
+    /* Skeleton Loading */
+    .skeleton {
+        @apply bg-gray-200 animate-pulse rounded;
+        background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite;
+    }
+
+    /* Cross Divider */
+    .cross-divider {
+        @apply relative flex items-center justify-center py-8;
+    }
+
+    .cross-divider::before {
+        @apply absolute w-full h-px bg-gray-200 content-[''];
+    }
+
+    .cross-divider-icon {
+        @apply relative z-10 w-8 h-8 bg-white flex items-center justify-center;
+    }
+
+    /* Glassmorphism */
+    .glass-card {
+        @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl;
+    }
+
+    .glass-dark {
+        @apply bg-dark-navy/80 backdrop-blur-md border border-white/10 rounded-2xl;
+    }
+
+    /* Line clamp utilities */
+    .line-clamp-1 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; }
+    .line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+    .line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+
+    /* Gradient text */
+    .gradient-text {
+        @apply text-transparent bg-clip-text bg-gradient-to-r from-church-blue to-sky-blue;
+    }
+
+    .gradient-text-gold {
+        @apply text-transparent bg-clip-text bg-gradient-to-r from-church-gold to-amber-400;
+    }
+
+    /* Pagination */
+    .pagination-link {
+        @apply inline-flex items-center justify-center w-10 h-10 rounded-xl border border-gray-200 text-sm font-medium text-gray-600 hover:bg-church-blue hover:text-white hover:border-church-blue transition-all duration-200;
+    }
+
+    .pagination-link-active {
+        @apply bg-church-blue text-white border-church-blue;
+    }
+}
+
+/* ============================================================
+   UTILITY OVERRIDES
+   ============================================================ */
+@layer utilities {
+    .text-balance { text-wrap: balance; }
+
+    .bg-grid {
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23145DA0' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes scroll-down {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(10px); opacity: 0; }
+}
+
+.animate-scroll-down {
+    animation: scroll-down 1.5s ease-in-out infinite;
+}
+
+/* Smooth page transitions */
+.page-transition {
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* Swiper custom styles */
+.swiper-pagination-bullet {
+    @apply bg-gray-300 opacity-100 w-2 h-2;
+}
+
+.swiper-pagination-bullet-active {
+    @apply bg-church-blue w-6 rounded-full;
+    transition: width 0.3s ease;
+}
+
+/* GLightbox custom */
+.glightbox-clean .gslide-description .gdesc-inner {
+    @apply bg-dark-navy/95 text-white;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { @apply bg-gray-100; }
+::-webkit-scrollbar-thumb { @apply bg-gray-300 rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-church-blue; }
+
+/* Rich text content styles */
+.prose-church {
+    @apply prose prose-lg max-w-none;
+    @apply prose-headings:font-heading prose-headings:text-dark-navy;
+    @apply prose-a:text-church-blue hover:prose-a:text-royal-blue;
+    @apply prose-blockquote:border-church-blue prose-blockquote:text-gray-600;
+    @apply prose-strong:text-dark-navy;
+}
+
+/* Video embed responsive */
+.video-container {
+    @apply relative w-full overflow-hidden rounded-2xl;
+    padding-bottom: 56.25%;
+}
+
+.video-container iframe,
+.video-container video {
+    @apply absolute inset-0 w-full h-full;
+}
+
+/* Mobile touch improvements */
+@media (max-width: 768px) {
+    .btn-primary, .btn-secondary, .btn-gold {
+        @apply px-6 py-3 text-sm;
+    }
+}
