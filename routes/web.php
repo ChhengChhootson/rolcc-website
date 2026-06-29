@@ -8,7 +8,7 @@ use App\Http\Controllers\Public\GalleryController;
 use App\Http\Controllers\Public\PrayerRequestController;
 use App\Http\Controllers\Public\ContactController;
 use App\Http\Controllers\Public\BlogController;
-use App\Http\Controllers\Public\NewsletterController;
+
 use Illuminate\Support\Facades\Route;
 
 // ============================================================
@@ -62,12 +62,6 @@ Route::prefix('prayer')->name('prayer.')->group(function () {
 Route::prefix('blog')->name('blog.')->group(function () {
     Route::get('/', [BlogController::class, 'index'])->name('index');
     Route::get('/{slug}', [BlogController::class, 'show'])->name('show');
-});
-
-// Newsletter
-Route::prefix('newsletter')->name('newsletter.')->group(function () {
-    Route::post('/subscribe', [NewsletterController::class, 'subscribe'])->name('subscribe')->middleware('throttle:3,1');
-    Route::get('/unsubscribe/{token}', [NewsletterController::class, 'unsubscribe'])->name('unsubscribe');
 });
 
 // Auth Routes (Breeze)

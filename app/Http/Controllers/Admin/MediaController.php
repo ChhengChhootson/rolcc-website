@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Media;
+use App\Models\MediaFile;
 use App\Services\MediaService;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class MediaController extends Controller
 
     public function index(Request $request)
     {
-        $media = Media::when($request->type, fn($q) => $q->where('type', $request->type))
+        $media = MediaFile::when($request->type, fn($q) => $q->where('mime_type', 'like', $request->type . '/%'))
             ->when($request->search, fn($q) => $q->where('name', 'like', "%{$request->search}%"))
             ->latest()
             ->paginate(30);
@@ -37,10 +37,10 @@ class MediaController extends Controller
         return back()->with('success', 'File uploaded successfully.');
     }
 
-    public function destroy(Media $media)
+    public function destroy(MediaFile $mediaFile)
     {
-        $this->mediaService->delete($media->path);
-        $media->delete();
+        $this->mediaService->delete($mediaFile->path);
+        $mediaFile->delete();
 
         return back()->with('success', 'File deleted successfully.');
     }

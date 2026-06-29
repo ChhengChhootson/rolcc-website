@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\DonationController;
 use App\Http\Controllers\Admin\LeadershipController;
 use App\Http\Controllers\Admin\TestimonialController;
-use App\Http\Controllers\Admin\NewsletterController;
+
 use App\Http\Controllers\Admin\AnnouncementController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +49,7 @@ Route::middleware(['auth', 'verified', 'admin'])
         Route::resource('blog-categories', \App\Http\Controllers\Admin\BlogCategoryController::class);
 
         // Donations
+        Route::get('donations/export', [DonationController::class, 'export'])->name('donations.export');
         Route::resource('donations', DonationController::class)->only(['index', 'show', 'destroy']);
         Route::resource('donation-categories', \App\Http\Controllers\Admin\DonationCategoryController::class);
 
@@ -62,11 +63,7 @@ Route::middleware(['auth', 'verified', 'admin'])
         // Testimonials
         Route::resource('testimonials', TestimonialController::class);
         Route::post('testimonials/{testimonial}/approve', [TestimonialController::class, 'approve'])->name('testimonials.approve');
-
-        // Newsletter
-        Route::get('newsletter', [NewsletterController::class, 'index'])->name('newsletter.index');
-        Route::delete('newsletter/{newsletter}', [NewsletterController::class, 'destroy'])->name('newsletter.destroy');
-        Route::resource('newsletter-campaigns', \App\Http\Controllers\Admin\NewsletterCampaignController::class);
+        Route::post('testimonials/{testimonial}/toggle-featured', [TestimonialController::class, 'toggleFeatured'])->name('testimonials.toggle-featured');
 
         // Announcements
         Route::resource('announcements', AnnouncementController::class);
@@ -74,7 +71,7 @@ Route::middleware(['auth', 'verified', 'admin'])
         // Media Library
         Route::get('media', [MediaController::class, 'index'])->name('media.index');
         Route::post('media/upload', [MediaController::class, 'upload'])->name('media.upload');
-        Route::delete('media/{media}', [MediaController::class, 'destroy'])->name('media.destroy');
+        Route::delete('media/{mediaFile}', [MediaController::class, 'destroy'])->name('media.destroy');
 
         // Users & Roles
         Route::resource('users', UserController::class);

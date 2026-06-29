@@ -57,8 +57,10 @@ class Setting extends Model
 
     protected static function booted(): void
     {
-        static::saved(function () {
-            Cache::tags(['settings'])->flush();
+        static::saved(function (self $setting) {
+            Cache::forget("setting_{$setting->key}");
+            Cache::forget("settings_group_{$setting->group}");
+            Cache::forget('all_settings');
         });
     }
 }

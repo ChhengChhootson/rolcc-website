@@ -10,6 +10,8 @@ class Leadership extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'leadership';
+
     protected $fillable = [
         'name', 'title', 'title_km', 'photo', 'bio', 'bio_km',
         'email', 'phone', 'facebook_url', 'instagram_url',
@@ -35,6 +37,11 @@ class Leadership extends Model
     public function scopeActive($query)
     {
         return $query->where('is_active', true)->orderBy('order');
+    }
+
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('order')->orderBy('name');
     }
 
     public function scopeByCategory($query, string $category)

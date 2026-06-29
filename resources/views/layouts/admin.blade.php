@@ -61,7 +61,6 @@
                     <span class="text-xs font-semibold text-gray-500 uppercase tracking-widest">Communication</span>
                 </div>
                 <x-admin.nav-item route="admin.prayers.index" icon="prayer" label="Prayer Requests" badge="{{ \App\Models\PrayerRequest::pending()->count() }}" :collapsed="false"/>
-                <x-admin.nav-item route="admin.newsletter.index" icon="mail" label="Newsletter" :collapsed="false"/>
                 <x-admin.nav-item route="admin.announcements.index" icon="announcement" label="Announcements" :collapsed="false"/>
                 <x-admin.nav-item route="admin.testimonials.index" icon="testimonial" label="Testimonials" :collapsed="false"/>
 

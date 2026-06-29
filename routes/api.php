@@ -48,6 +48,5 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
 // Protected API (requires auth)
 Route::middleware('auth:sanctum')->prefix('v1')->name('api.v1.auth.')->group(function () {
     Route::post('/prayer-requests', [\App\Http\Controllers\Api\PrayerApiController::class, 'store'])->name('prayer.store');
-    Route::post('/newsletter/subscribe', [\App\Http\Controllers\Api\NewsletterApiController::class, 'subscribe'])->name('newsletter.subscribe');
-    Route::get('/user', fn() => auth()->user())->name('user');
+Route::get('/user', fn() => auth()->user())->name('user');
 });

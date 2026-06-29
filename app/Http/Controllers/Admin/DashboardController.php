@@ -8,7 +8,6 @@ use App\Models\Event;
 use App\Models\Donation;
 use App\Models\PrayerRequest;
 use App\Models\EventRegistration;
-use App\Models\Newsletter;
 use App\Models\ContactMessage;
 use App\Models\User;
 use Illuminate\Support\Facades\Cache;
@@ -30,7 +29,6 @@ class DashboardController extends Controller
                 'total_donations_count_this_month' => Donation::completed()->thisMonth()->count(),
                 'pending_prayer_requests' => PrayerRequest::pending()->count(),
                 'urgent_prayer_requests' => PrayerRequest::urgent()->where('status', 'pending')->count(),
-                'newsletter_subscribers' => Newsletter::subscribed()->count(),
                 'unread_messages' => ContactMessage::where('status', 'unread')->count(),
                 'total_users' => User::count(),
                 'new_users_this_month' => User::whereMonth('created_at', $now->month)->count(),

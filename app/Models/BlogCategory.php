@@ -32,4 +32,9 @@ class BlogCategory extends Model
     {
         return $this->hasMany(BlogCategory::class, 'parent_id');
     }
+
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('order')->orderBy('name');
+    }
 }

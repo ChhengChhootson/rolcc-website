@@ -82,11 +82,7 @@
 
     {{-- Second row --}}
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="admin-stat-card bg-white border border-gray-100 shadow-sm">
-            <div class="text-gray-500 text-sm mb-2">Newsletter Subscribers</div>
-            <div class="text-2xl font-bold text-gray-900">{{ number_format($stats['newsletter_subscribers']) }}</div>
-        </div>
-        <div class="admin-stat-card bg-white border border-gray-100 shadow-sm">
+<div class="admin-stat-card bg-white border border-gray-100 shadow-sm">
             <div class="text-gray-500 text-sm mb-2">Unread Messages</div>
             <div class="text-2xl font-bold text-gray-900">{{ number_format($stats['unread_messages']) }}</div>
         </div>

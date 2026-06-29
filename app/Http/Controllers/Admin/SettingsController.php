@@ -14,7 +14,7 @@ class SettingsController extends Controller
 
     public function index()
     {
-        $settings = Setting::orderBy('group')->orderBy('order')->get()->groupBy('group');
+        $settings = Setting::orderBy('group')->orderBy('order')->get();
         return view('admin.settings.index', compact('settings'));
     }
 

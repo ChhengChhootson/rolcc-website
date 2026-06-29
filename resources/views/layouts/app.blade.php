@@ -41,13 +41,13 @@
     {{-- Schema Markup --}}
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "Church",
+        "@@context": "https://schema.org",
+        "@@type": "Church",
         "name": "{{ config('church.name') }}",
         "url": "{{ config('app.url') }}",
         "logo": "{{ asset('images/logo.png') }}",
         "address": {
-            "@type": "PostalAddress",
+            "@@type": "PostalAddress",
             "addressLocality": "Phnom Penh",
             "addressCountry": "KH"
         },

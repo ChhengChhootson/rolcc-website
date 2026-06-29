@@ -129,6 +129,9 @@
     }
 }
 
+/* Alpine.js cloak */
+[x-cloak] { display: none !important; }
+
 /* Custom Scrollbar for sidebar */
 aside::-webkit-scrollbar {
     width: 3px;
@@ -154,13 +157,21 @@ trix-toolbar {
 
 /* Image preview */
 .image-preview {
-    @apply relative group overflow-hidden rounded-xl;
+    @apply relative overflow-hidden rounded-xl;
 }
 
 .image-preview img {
-    @apply w-full h-full object-cover transition-transform duration-300 group-hover:scale-105;
+    @apply w-full h-full object-cover transition-transform duration-300;
+}
+
+.image-preview:hover img {
+    @apply scale-105;
 }
 
 .image-preview .overlay {
-    @apply absolute inset-0 bg-dark-navy/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center;
+    @apply absolute inset-0 bg-dark-navy/50 opacity-0 transition-opacity duration-300 flex items-center justify-center;
+}
+
+.image-preview:hover .overlay {
+    @apply opacity-100;
 }

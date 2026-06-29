@@ -27,6 +27,11 @@ class SermonCategory extends Model
         return $this->hasMany(Sermon::class, 'category_id');
     }
 
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('order')->orderBy('name');
+    }
+
     public function getPublishedSermonsCountAttribute(): int
     {
         return $this->sermons()->published()->count();

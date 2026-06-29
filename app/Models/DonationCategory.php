@@ -32,4 +32,9 @@ class DonationCategory extends Model
     {
         return $query->where('is_active', true)->orderBy('order');
     }
+
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('order')->orderBy('name');
+    }
 }
